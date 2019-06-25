@@ -1,0 +1,72 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>마진과 패딩</title>
+<style type="text/css">
+body {
+	font-family: "돋움", "맑은 고딕";
+	font-size: 0.8em;
+	color: #333;	
+}
+
+.box1 {
+	border:1px solid #666;
+	width:300px;
+	background-color: #FFC;
+	
+	padding: 10px 20px 10px 20px;
+	/* shorten */padding: 10px 20px;
+	
+	padding: 50px 10px 80px 10px;
+	/* shorten */padding: 50px 10px 80px;
+	
+	margin: 10px 10px 10px 10px;
+	margin-top: -20px;
+}
+</style>
+
+<script>
+var f = function() {
+	
+}
+	window.onload = function(){
+		var el = document.getElementById('box');
+		console.log(parseInt(el.style.marginTop, 10))
+		var height = el.offsetHeight;
+		
+		// var 입력안해주면 전역범위로 설정됨
+		var margin = 0;
+		
+		
+		/* 일정 시간이 지난후에 동작하게 하는 함수
+		setTimeout(function name() {
+			console.log(100)
+		},10000); */
+		
+		/* 반복동작을 하게끔 하는 함수 */
+		var intervalId = setInterval(function() {
+			var el = document.getElementById('box');
+			margin -= 1;
+			el.style.marginTop = margin + "px";
+			
+			if(margin < -100){
+				clearInterval(intervalId);
+			}
+		},10);
+		
+		
+		
+	}
+	
+</script>
+</head>
+
+<body>
+<div id="box" class="box1" style="margin-top: 0px">
+CSS에서 가장 보편적이고 많이 사용하는 마진과 패딩에 대한 값이 어떻게 적용되는지 확인해 보겠습니다.
+</div>
+
+
+</body>
+</html>
